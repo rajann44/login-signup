@@ -21,7 +21,7 @@ const Navbar = () => {
             <div className="mx-2">Login | Signup flow</div>
           </Link>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -29,13 +29,13 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
                 <Link
-                  class={`nav-link ${
+                  className={`nav-link ${
                     location.pathname === "/signup" ? "active" : ""
                   }`}
                   aria-current="page"
@@ -44,9 +44,9 @@ const Navbar = () => {
                   Signup
                 </Link>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <Link
-                  class={`nav-link ${
+                  className={`nav-link ${
                     location.pathname === "/login" ? "active" : ""
                   }`}
                   to="/login"
