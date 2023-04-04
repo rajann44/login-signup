@@ -11,6 +11,9 @@ const Login = () => {
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
+    isInvalid: {
+      emailOrPassword: false,
+    },
   });
 
   useEffect(() => {
@@ -24,7 +27,6 @@ const Login = () => {
     );
     const userDocument = await getDocs(queryResult);
     if (userDocument.size == 1) {
-      console.log(userDocument.size);
       userDocument.forEach((singleUserDoc) => {
         const dataFromDoc = singleUserDoc.data();
         const isUser = bcrypt.compareSync(
@@ -35,10 +37,24 @@ const Login = () => {
           navigate("/");
           console.log("Login Success");
         } else {
+          setLoginForm((prevState) => ({
+            ...prevState,
+            isInvalid: {
+              ...prevState.isInvalid,
+              emailOrPassword: true,
+            },
+          }));
           console.log("Invalid creds");
         }
       });
     } else {
+      setLoginForm((prevState) => ({
+        ...prevState,
+        isInvalid: {
+          ...prevState.isInvalid,
+          emailOrPassword: true,
+        },
+      }));
       console.log("Invalid creds");
     }
   };
@@ -86,6 +102,9 @@ const Login = () => {
               setLoginForm({ ...loginForm, password: event.target.value })
             }
           />
+          {loginForm.isInvalid.emailOrPassword && (
+            <span style={{ color: "red" }}>Enter Valid Credentials 😓</span>
+          )}
         </div>
         <div className="terms">
           By signing in you agree to our{" "}

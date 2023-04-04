@@ -19,7 +19,7 @@ const Signup = () => {
     },
   });
 
-  const validateAndThenSignup = () => {
+  const validateSignupRequirement = () => {
     setSignupForm((prevState) => ({
       ...prevState,
       isInvalid: {
@@ -37,7 +37,7 @@ const Signup = () => {
   };
 
   const handleSignup = async () => {
-    validateAndThenSignup();
+    validateSignupRequirement();
     if (
       !isEmailInvalid(signupForm.email) &&
       !isPasswordInvalid(signupForm.password)
