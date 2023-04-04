@@ -14,6 +14,11 @@ const Signup = () => {
     password: "",
   });
 
+  useEffect(() => {
+    console.log(signupForm.email.length);
+    console.log(signupForm.email.size);
+  }, []);
+
   const handleSignup = async () => {
     try {
       const queryResult = query(
@@ -82,7 +87,7 @@ const Signup = () => {
             }
           />
         </div>
-        <div class="terms">
+        <div className="terms">
           By signing up you agree to our{" "}
           <a href="https://google.com" target="_blank" rel="noopener">
             Terms of Service

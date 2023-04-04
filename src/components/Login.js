@@ -54,7 +54,7 @@ const Login = () => {
             role="presentation"
             className={formstyle.header_img}
           />
-          <h1 className={formstyle.header_h1}>Login up Now</h1>
+          <h1 className={formstyle.header_h1}>Login Now</h1>
         </header>
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className={formstyle.label}>
@@ -87,7 +87,7 @@ const Login = () => {
             }
           />
         </div>
-        <div class="terms">
+        <div className="terms">
           By signing in you agree to our{" "}
           <a href="https://google.com" target="_blank" rel="noopener">
             Terms of Service
