@@ -1,5 +1,6 @@
 import React from "react";
 import homestyle from "../style/home.module.css";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
         </p>
         <p>Homepage CSS is being rendered using style modules</p>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
