@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import bcrypt from "bcryptjs";
 import { useNavigate } from "react-router-dom";
 import { usersReference } from "../firebase/FireApp";
+import formstyle from "../style/form.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -42,38 +43,53 @@ const Login = () => {
   };
 
   return (
-    <div className="container my-3">
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          Email address
-        </label>
-        <input
-          type="email"
-          className="form-control"
-          id="email"
-          placeholder="name@example.com"
-          onChange={(event) =>
-            setLoginForm({ ...loginForm, email: event.target.value })
-          }
-        />
+    <div className={"container my-3 " + formstyle.outerFrame}>
+      <div className={formstyle.outerFrame_2}>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className={formstyle.label}>
+            {/* Email address*/}
+          </label>
+          <input
+            type="email"
+            className={formstyle.input}
+            id="email"
+            placeholder="Work email"
+            onChange={(event) =>
+              setLoginForm({ ...loginForm, email: event.target.value })
+            }
+          />
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="exampleFormControlTextarea2"
+            className={formstyle.label}
+          >
+            {/* Password*/}
+          </label>
+          <input
+            type="password"
+            className={formstyle.input}
+            id="password"
+            placeholder="Password"
+            onChange={(event) =>
+              setLoginForm({ ...loginForm, password: event.target.value })
+            }
+          />
+        </div>
+        <div class="terms">
+          By signing up you agree to our{" "}
+          <a href="https://google.com" target="_blank" rel="noopener">
+            Terms of Service
+          </a>
+        </div>
+        <button
+          type="button"
+          className={"btn btn-success my-3 " + formstyle.loginBtn}
+          onClick={handleLogin}
+        >
+          <span className={formstyle.loginBtnTxt}>Login</span>
+        </button>
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlTextarea2" className="form-label">
-          Password
-        </label>
-        <input
-          type="password"
-          className="form-control"
-          id="password"
-          placeholder="secret"
-          onChange={(event) =>
-            setLoginForm({ ...loginForm, password: event.target.value })
-          }
-        />
-      </div>
-      <button type="button" className="btn btn-success" onClick={handleLogin}>
-        Login
-      </button>
     </div>
   );
 };

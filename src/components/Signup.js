@@ -3,6 +3,8 @@ import bcrypt from "bcryptjs";
 import { useNavigate } from "react-router-dom";
 import { usersReference } from "../firebase/FireApp";
 import { addDoc, getDocs, query, where } from "firebase/firestore";
+import formstyle from "../style/form.module.css";
+import signupLogo from "../assets/signupLogo.gif";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -37,38 +39,66 @@ const Signup = () => {
   };
 
   return (
-    <div className="container my-3">
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          Email address
-        </label>
-        <input
-          type="email"
-          className="form-control"
-          id="email"
-          placeholder="name@example.com"
-          onChange={(event) =>
-            setSignupForm({ ...signupForm, email: event.target.value })
-          }
-        />
+    <div className={"container my-3 " + formstyle.outerFrame}>
+      <div className={formstyle.outerFrame_2}>
+        <header className={formstyle.header}>
+          <img
+            width="100"
+            height="100"
+            src={signupLogo}
+            role="presentation"
+            style={{ borderRadius: "10px" }}
+            className={formstyle.header_img}
+          />
+          <h1 className={formstyle.header_h1}>
+            Sign up <br /> Now
+          </h1>
+        </header>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className={formstyle.label}>
+            {/* Email address*/}
+          </label>
+          <input
+            type="email"
+            className={formstyle.input}
+            id="email"
+            placeholder="name@example.com"
+            onChange={(event) =>
+              setSignupForm({ ...signupForm, email: event.target.value })
+            }
+          />
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="exampleFormControlTextarea2"
+            className={formstyle.label}
+          >
+            {/* Password*/}
+          </label>
+          <input
+            type="password"
+            className={formstyle.input}
+            id="password"
+            placeholder="secret"
+            onChange={(event) =>
+              setSignupForm({ ...signupForm, password: event.target.value })
+            }
+          />
+        </div>
+        <div class="terms">
+          By signing up you agree to our{" "}
+          <a href="https://google.com" target="_blank" rel="noopener">
+            Terms of Service
+          </a>
+        </div>
+        <button
+          type="button"
+          className={"btn btn-success my-3 " + formstyle.loginBtn}
+          onClick={handleSignup}
+        >
+          <span className={formstyle.loginBtnTxt}>Signup</span>
+        </button>
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlTextarea2" className="form-label">
-          Password
-        </label>
-        <input
-          type="password"
-          className="form-control"
-          id="password"
-          placeholder="secret"
-          onChange={(event) =>
-            setSignupForm({ ...signupForm, password: event.target.value })
-          }
-        />
-      </div>
-      <button type="button" className="btn btn-success" onClick={handleSignup}>
-        Signup
-      </button>
     </div>
   );
 };
