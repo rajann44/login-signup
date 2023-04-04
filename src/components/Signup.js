@@ -12,10 +12,6 @@ const Signup = () => {
     password: "",
   });
 
-  useEffect(() => {
-    console.log(signupForm);
-  }, [signupForm]);
-
   const handleSignup = async () => {
     try {
       const queryResult = query(

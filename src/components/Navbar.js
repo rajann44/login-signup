@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import logo from "../img/nav.png";
+import { Appstate } from "../App";
 
 const Navbar = () => {
   let location = useLocation();
