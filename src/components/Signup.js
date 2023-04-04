@@ -1,14 +1,44 @@
 import React, { useEffect, useState } from "react";
+import bcrypt from "bcryptjs";
+import { useNavigate } from "react-router-dom";
+import { usersReference } from "../firebase/FireApp";
+import { addDoc, getDocs, query, where } from "firebase/firestore";
 
 const Signup = () => {
-  const [loginForm, setLoginForm] = useState({
+  const navigate = useNavigate();
+
+  const [signupForm, setSignupForm] = useState({
     email: "",
     password: "",
   });
 
   useEffect(() => {
-    console.log(loginForm);
-  }, [loginForm]);
+    console.log(signupForm);
+  }, [signupForm]);
+
+  const handleSignup = async () => {
+    try {
+      const queryResult = query(
+        usersReference,
+        where("email", "==", signupForm.email)
+      );
+      const userDocument = await getDocs(queryResult);
+      if (userDocument.size === 0) {
+        const salt = bcrypt.genSaltSync(10);
+        var hash = bcrypt.hashSync(signupForm.password, salt);
+        await addDoc(usersReference, {
+          email: signupForm.email,
+          password: hash,
+        });
+        console.log("User signup successful");
+        navigate("/login");
+      } else {
+        console.log("User signup failed, Email already exists");
+      }
+    } catch (error) {
+      console.log("User signup failed " + error);
+    }
+  };
 
   return (
     <div className="container my-3">
@@ -22,13 +52,13 @@ const Signup = () => {
           id="email"
           placeholder="name@example.com"
           onChange={(event) =>
-            setLoginForm({ ...loginForm, email: event.target.value })
+            setSignupForm({ ...signupForm, email: event.target.value })
           }
         />
       </div>
       <div className="mb-3">
         <label htmlFor="exampleFormControlTextarea2" className="form-label">
-          Example textarea
+          Password
         </label>
         <input
           type="password"
@@ -36,12 +66,12 @@ const Signup = () => {
           id="password"
           placeholder="secret"
           onChange={(event) =>
-            setLoginForm({ ...loginForm, password: event.target.value })
+            setSignupForm({ ...signupForm, password: event.target.value })
           }
         />
       </div>
-      <button type="button" className="btn btn-success">
-        Success
+      <button type="button" className="btn btn-success" onClick={handleSignup}>
+        Signup
       </button>
     </div>
   );
