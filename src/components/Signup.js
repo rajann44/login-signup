@@ -47,12 +47,9 @@ const Signup = () => {
             height="100"
             src={signupLogo}
             role="presentation"
-            style={{ borderRadius: "10px" }}
             className={formstyle.header_img}
           />
-          <h1 className={formstyle.header_h1}>
-            Sign up <br /> Now
-          </h1>
+          <h1 className={formstyle.header_h1}>Sign up Now</h1>
         </header>
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className={formstyle.label}>
@@ -62,7 +59,7 @@ const Signup = () => {
             type="email"
             className={formstyle.input}
             id="email"
-            placeholder="name@example.com"
+            placeholder="Work email"
             onChange={(event) =>
               setSignupForm({ ...signupForm, email: event.target.value })
             }
@@ -79,7 +76,7 @@ const Signup = () => {
             type="password"
             className={formstyle.input}
             id="password"
-            placeholder="secret"
+            placeholder="Password"
             onChange={(event) =>
               setSignupForm({ ...signupForm, password: event.target.value })
             }

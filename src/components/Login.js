@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import { useNavigate } from "react-router-dom";
 import { usersReference } from "../firebase/FireApp";
 import formstyle from "../style/form.module.css";
+import loginLogo from "../assets/login.gif";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -45,6 +46,16 @@ const Login = () => {
   return (
     <div className={"container my-3 " + formstyle.outerFrame}>
       <div className={formstyle.outerFrame_2}>
+        <header className={formstyle.header}>
+          <img
+            width="100"
+            height="100"
+            src={loginLogo}
+            role="presentation"
+            className={formstyle.header_img}
+          />
+          <h1 className={formstyle.header_h1}>Login up Now</h1>
+        </header>
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className={formstyle.label}>
             {/* Email address*/}
@@ -77,7 +88,7 @@ const Login = () => {
           />
         </div>
         <div class="terms">
-          By signing up you agree to our{" "}
+          By signing in you agree to our{" "}
           <a href="https://google.com" target="_blank" rel="noopener">
             Terms of Service
           </a>
