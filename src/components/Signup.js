@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import bcrypt from "bcryptjs";
 import { useNavigate } from "react-router-dom";
 import { usersReference } from "../firebase/FireApp";
 import { addDoc, getDocs, query, where } from "firebase/firestore";
 import formstyle from "../style/form.module.css";
 import signupLogo from "../assets/signupLogo.gif";
+import { isEmailInvalid, isPasswordInvalid } from "../utils/FormValidation";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -12,12 +13,28 @@ const Signup = () => {
   const [signupForm, setSignupForm] = useState({
     email: "",
     password: "",
+    isInvalid: {
+      email: "",
+      password: "",
+    },
   });
 
-  useEffect(() => {
-    console.log(signupForm.email.length);
-    console.log(signupForm.email.size);
-  }, []);
+  const validateAndThenSignup = () => {
+    setSignupForm((prevState) => ({
+      ...prevState,
+      isInvalid: {
+        ...prevState.isInvalid,
+        email: isEmailInvalid(signupForm.email),
+      },
+    }));
+    setSignupForm((prevState) => ({
+      ...prevState,
+      isInvalid: {
+        ...prevState.isInvalid,
+        password: isPasswordInvalid(signupForm.password),
+      },
+    }));
+  };
 
   const handleSignup = async () => {
     try {
@@ -69,6 +86,9 @@ const Signup = () => {
               setSignupForm({ ...signupForm, email: event.target.value })
             }
           />
+          {signupForm.isInvalid.email && (
+            <span style={{ color: "red" }}>Enter Valid 📧 Email 😓</span>
+          )}
         </div>
         <div className="mb-3">
           <label
@@ -86,6 +106,9 @@ const Signup = () => {
               setSignupForm({ ...signupForm, password: event.target.value })
             }
           />
+          {signupForm.isInvalid.password && (
+            <span style={{ color: "red" }}>Enter Valid 🔑 Password 😓</span>
+          )}
         </div>
         <div className="terms">
           By signing up you agree to our{" "}
@@ -96,7 +119,7 @@ const Signup = () => {
         <button
           type="button"
           className={"btn btn-success my-3 " + formstyle.loginBtn}
-          onClick={handleSignup}
+          onClick={validateAndThenSignup}
         >
           <span className={formstyle.loginBtnTxt}>Signup</span>
         </button>
