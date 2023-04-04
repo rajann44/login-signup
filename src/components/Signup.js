@@ -37,26 +37,32 @@ const Signup = () => {
   };
 
   const handleSignup = async () => {
-    try {
-      const queryResult = query(
-        usersReference,
-        where("email", "==", signupForm.email)
-      );
-      const userDocument = await getDocs(queryResult);
-      if (userDocument.size === 0) {
-        const salt = bcrypt.genSaltSync(10);
-        var hash = bcrypt.hashSync(signupForm.password, salt);
-        await addDoc(usersReference, {
-          email: signupForm.email,
-          password: hash,
-        });
-        console.log("User signup successful");
-        navigate("/login");
-      } else {
-        console.log("User signup failed, Email already exists");
+    validateAndThenSignup();
+    if (
+      !isEmailInvalid(signupForm.email) &&
+      !isPasswordInvalid(signupForm.password)
+    ) {
+      try {
+        const queryResult = query(
+          usersReference,
+          where("email", "==", signupForm.email)
+        );
+        const userDocument = await getDocs(queryResult);
+        if (userDocument.size === 0) {
+          const salt = bcrypt.genSaltSync(10);
+          var hash = bcrypt.hashSync(signupForm.password, salt);
+          await addDoc(usersReference, {
+            email: signupForm.email,
+            password: hash,
+          });
+          console.log("User signup successful");
+          navigate("/login");
+        } else {
+          console.log("User signup failed, Email already exists");
+        }
+      } catch (error) {
+        console.log("User signup failed " + error);
       }
-    } catch (error) {
-      console.log("User signup failed " + error);
     }
   };
 
@@ -119,7 +125,7 @@ const Signup = () => {
         <button
           type="button"
           className={"btn btn-success my-3 " + formstyle.loginBtn}
-          onClick={validateAndThenSignup}
+          onClick={handleSignup}
         >
           <span className={formstyle.loginBtnTxt}>Signup</span>
         </button>
