@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import style from "../../style/user.module.css";
 import Header from "./Header";
+import { db } from "../../firebase/FireApp";
+import { doc, getDoc } from "firebase/firestore";
 
 const User = () => {
+  const { id } = useParams();
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    async function getData() {
+      const reqInfo = doc(db, "users", id);
+      const user = await getDoc(reqInfo);
+      setUserInfo(user.data());
+    }
+    getData();
+  }, []);
+
   return (
     <>
       <Header></Header>
@@ -24,6 +42,8 @@ const User = () => {
                     <input
                       className={style.InputField}
                       placeholder="Email"
+                      value={userInfo.email}
+                      onChange={(e) => setUserInfo.email(e)}
                     ></input>
                   </div>
                 </div>
@@ -33,6 +53,9 @@ const User = () => {
                     <input
                       className={style.InputField}
                       placeholder="Password"
+                      value={userInfo.password}
+                      type="password"
+                      onChange={(e) => setUserInfo.password(e)}
                     ></input>
                   </div>
                 </div>

@@ -21,6 +21,7 @@ const Login = () => {
   }, [loginForm]);
 
   const handleLogin = async () => {
+    let userId;
     const queryResult = query(
       usersReference,
       where("email", "==", loginForm.email)
@@ -29,12 +30,13 @@ const Login = () => {
     if (userDocument.size == 1) {
       userDocument.forEach((singleUserDoc) => {
         const dataFromDoc = singleUserDoc.data();
+        userId = singleUserDoc.id;
         const isUser = bcrypt.compareSync(
           loginForm.password,
           dataFromDoc.password
         );
         if (isUser) {
-          navigate("/");
+          navigate("/user/" + userId);
           console.log("Login Success");
         } else {
           setLoginForm((prevState) => ({
