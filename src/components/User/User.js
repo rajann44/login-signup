@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import style from "../../style/user.module.css";
 import Header from "./Header";
 import { db } from "../../firebase/FireApp";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 const User = () => {
   const { id } = useParams();
@@ -21,9 +21,19 @@ const User = () => {
     getData();
   }, []);
 
+  const updateUser = async () => {
+    try {
+      const docRef = doc(db, "users", id);
+      await updateDoc(docRef, userInfo);
+      console.log("Data Updated");
+    } catch (error) {
+      console.log("Error while updating Updated");
+    }
+  };
+
   return (
     <>
-      <Header></Header>
+      <Header handleOnClick={updateUser}></Header>
       <div className={style.MainContainer}>
         <div className={style.ContainerContent}>
           <div className={style.ContentFrame}>
@@ -43,7 +53,9 @@ const User = () => {
                       className={style.InputField}
                       placeholder="Email"
                       value={userInfo.email}
-                      onChange={(e) => setUserInfo.email(e)}
+                      onChange={(event) =>
+                        setUserInfo({ ...userInfo, email: event.target.value })
+                      }
                     ></input>
                   </div>
                 </div>
@@ -55,7 +67,12 @@ const User = () => {
                       placeholder="Password"
                       value={userInfo.password}
                       type="password"
-                      onChange={(e) => setUserInfo.password(e)}
+                      onChange={(event) =>
+                        setUserInfo({
+                          ...userInfo,
+                          password: event.target.value,
+                        })
+                      }
                     ></input>
                   </div>
                 </div>
