@@ -21,13 +21,19 @@ const User = () => {
                 <div className={style.FormSectionGridRow}>
                   <div className={style.FormSectionGridColumn}>
                     <label className={style.InputLabel}></label>
-                    <input className={style.InputField}></input>
+                    <input
+                      className={style.InputField}
+                      placeholder="Email"
+                    ></input>
                   </div>
                 </div>
                 <div className={style.FormSectionGridRow}>
                   <div className={style.FormSectionGridColumn}>
                     <label className={style.InputLabel}></label>
-                    <input className={style.InputField}></input>
+                    <input
+                      className={style.InputField}
+                      placeholder="Password"
+                    ></input>
                   </div>
                 </div>
                 <div className={style.FormSectionGridRow}></div>

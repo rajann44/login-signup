@@ -1,13 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import style from "../../style/userheader.module.css";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={style.OverlayHeader}>
       <div className={style.HeaderMain}>
         <div className={style.HeaderPart1}>
           <div className={style.HeaderPart1_Left}>
-            <button className={style.HeaderPart1_LeftButton}>
+            <button
+              className={style.HeaderPart1_LeftButton}
+              onClick={() => navigate("/")}
+            >
               <span className={style.HeaderPart1_LeftButton_Span1}>⬅</span>
               <span className={style.HeaderPart1_LeftButton_Span2}>Back</span>
             </button>
