@@ -4,9 +4,11 @@ import style from "../../style/user.module.css";
 import Header from "./Header";
 import { db } from "../../firebase/FireApp";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
+import Toast from "./Toast";
 
 const User = () => {
   const { id } = useParams();
+  const [showToast, setShowToast] = useState(false);
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
@@ -26,13 +28,22 @@ const User = () => {
       const docRef = doc(db, "users", id);
       await updateDoc(docRef, userInfo);
       console.log("Data Updated");
+      setShowToast(true);
+      resetToast();
     } catch (error) {
       console.log("Error while updating Updated");
     }
   };
 
+  function resetToast() {
+    setTimeout(function () {
+      setShowToast(false);
+    }, 4000);
+  }
+
   return (
     <>
+      <Toast showToast={showToast}></Toast>
       <Header handleOnClick={updateUser}></Header>
       <div className={style.MainContainer}>
         <div className={style.ContainerContent}>
