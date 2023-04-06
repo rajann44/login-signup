@@ -5,14 +5,15 @@ import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
 import User from "./components/User/User";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import UserList from "./components/User/UserList";
 
 const Appstate = createContext();
 
 function App() {
+  const [login, setLogin] = useState(false);
   return (
-    <Appstate.Provider value={{}}>
+    <Appstate.Provider value={{ login, setLogin }}>
       <div className="App">
         <Navbar></Navbar>
         <Routes>

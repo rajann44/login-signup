@@ -1,11 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import logo from "../img/nav.png";
 import { Appstate } from "../App";
 
 const Navbar = () => {
   let location = useLocation();
+  const navigate = useNavigate();
+  const useAppstate = useContext(Appstate);
 
   return (
     <div>
@@ -32,8 +34,8 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+          <div className="collapse navbar-collapse " id="navbarNav">
+            <ul className="navbar-nav align-items-center">
               <li className="nav-item">
                 <Link
                   className={`nav-link ${
@@ -55,6 +57,24 @@ const Navbar = () => {
                   Login
                 </Link>
               </li>
+              {useAppstate.login ? (
+                <li className="nav-item">
+                  <Link className="nav-link" to={"/"}>
+                    <button
+                      type="button"
+                      class="btn btn-warning"
+                      onClick={() => {
+                        useAppstate.setLogin(false);
+                        navigate("/");
+                      }}
+                    >
+                      Sign Out
+                    </button>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
             </ul>
           </div>
         </div>

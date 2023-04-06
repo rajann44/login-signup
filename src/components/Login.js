@@ -1,13 +1,15 @@
 import { getDocs, query, where } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import bcrypt from "bcryptjs";
 import { useNavigate } from "react-router-dom";
 import { usersReference } from "../firebase/FireApp";
 import formstyle from "../style/form.module.css";
 import loginLogo from "../assets/login.gif";
+import { Appstate } from "../App";
 
 const Login = () => {
   const navigate = useNavigate();
+  const useAppstate = useContext(Appstate);
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -37,6 +39,7 @@ const Login = () => {
         );
         if (isUser) {
           //navigate("/user/" + userId);
+          useAppstate.setLogin(true);
           navigate("/user/");
           console.log("Login Success");
         } else {
