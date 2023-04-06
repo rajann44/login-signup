@@ -1,0 +1,322 @@
+.userDashboard {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  vertical-align: initial;
+  background: var(--theme_color_surface-1);
+  color: var(--theme_color_on-surface-1_high);
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 56px;
+  overflow: auto;
+  padding: 30px 8% 20px;
+}
+
+.MainDiv {
+  color: var(--theme_color_on-surface-1_high);
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.divWithTitle {
+  --tooltip-bg: #44505e;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  border-bottom: 1px solid #ececec;
+  color: #6e848b;
+  font-size: 11px;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(85px, 300px) minmax(150px, 100%) 60px;
+}
+
+.divWithName {
+  -webkit-font-smoothing: antialiased;
+  color: #6e848b;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  font-size: 13px;
+  padding-left: 20px;
+}
+
+.divWithWeek {
+  -webkit-font-smoothing: antialiased;
+  color: #6e848b;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  margin-right: 10px;
+  overflow: initial;
+}
+
+.divWithList {
+  -webkit-font-smoothing: antialiased;
+  color: var(--theme_color_on-surface-1_high);
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  height: 60px;
+  width: 100%;
+  position: relative;
+}
+
+.divWithListMain {
+  color: #343a3f;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 60px;
+}
+
+.divWithListRow {
+  -webkit-font-smoothing: antialiased;
+  color: #343a3f;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  border-bottom: 1px solid #eaeaea;
+  font-size: 14px;
+  grid-auto-flow: column;
+  height: 60px;
+  grid-gap: 10px;
+  align-items: center;
+  display: grid;
+  grid-template-columns:
+    minmax(85px, 320px) minmax(535px, 100%) 40px minmax(100px, 150px)
+    60px;
+}
+
+.divWithUserName {
+  -webkit-font-smoothing: antialiased;
+  color: #343a3f;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+.divWithUserNameTooltipContainer {
+  -webkit-font-smoothing: antialiased;
+  color: #343a3f;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  border-radius: inherit;
+  display: inline-block;
+  font-weight: 400;
+  position: relative;
+}
+
+.divWithUserNameTooltipContainerInside {
+  -webkit-font-smoothing: antialiased;
+  color: #343a3f;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  display: flex;
+}
+
+.divWithUserNameAvatar {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  color: rgba(0, 0, 0, 0.54);
+  border-radius: 4px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.divWithUserNameTooltip {
+  color: rgba(0, 0, 0, 0.54);
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  border-radius: inherit;
+  display: inline-block;
+  font-weight: 400;
+  position: relative;
+}
+
+.divWithUserNameAvatarTitle {
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  align-items: center;
+  background: #44515e;
+  color: #fff;
+  display: flex;
+  font-size: 11px;
+  font-weight: 700;
+  justify-content: center;
+  margin: 0 auto;
+  text-transform: uppercase;
+  border-radius: 4px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+}
+
+.divWithUserNameColumnUserName {
+  -webkit-font-smoothing: antialiased;
+  white-space: nowrap;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  cursor: pointer;
+  text-decoration: none;
+  color: #697077;
+}
+
+.divWithUserNameColumn {
+  color: #343a3f;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  align-self: center;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.divWithUserNameColumnUserDetail {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  align-self: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #8f969e;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.divWithUserNameColumnUserDetailText {
+  white-space: nowrap;
+  color: #8f969e;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  font-weight: 600;
+}
+
+.divWithWeekly {
+  color: #343a3f;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  margin-right: 10px;
+  overflow: initial;
+}
+
+.divWithWeeklyContent {
+  color: #343a3f;
+  box-sizing: border-box;
+  border: 0;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: initial;
+  display: grid;
+  font-size: 13px;
+  width: 100%;
+  //grid-template-columns: repeat(6, 1fr);
+}

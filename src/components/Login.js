@@ -36,7 +36,8 @@ const Login = () => {
           dataFromDoc.password
         );
         if (isUser) {
-          navigate("/user/" + userId);
+          //navigate("/user/" + userId);
+          navigate("/user/");
           console.log("Login Success");
         } else {
           setLoginForm((prevState) => ({

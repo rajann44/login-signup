@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
 import User from "./components/User/User";
 import { createContext } from "react";
+import UserList from "./components/User/UserList";
 
 const Appstate = createContext();
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/signup" element={<Signup></Signup>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/user/:id" element={<User></User>}></Route>
+          <Route path="/user" element={<UserList></UserList>}></Route>
         </Routes>
       </div>
     </Appstate.Provider>

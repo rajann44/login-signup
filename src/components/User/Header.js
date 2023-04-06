@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import style from "../../style/userheader.module.css";
 
-const Header = ({ handleOnClick }) => {
+const Header = ({ backButtonLink, headerTitle, buttonText, handleOnClick }) => {
   const navigate = useNavigate();
 
   return (
@@ -12,7 +12,7 @@ const Header = ({ handleOnClick }) => {
           <div className={style.HeaderPart1_Left}>
             <button
               className={style.HeaderPart1_LeftButton}
-              onClick={() => navigate("/")}
+              onClick={() => navigate(backButtonLink)}
             >
               <span className={style.HeaderPart1_LeftButton_Span1}>⬅</span>
               <span className={style.HeaderPart1_LeftButton_Span2}>Back</span>
@@ -25,14 +25,14 @@ const Header = ({ handleOnClick }) => {
               onClick={handleOnClick}
             >
               <span className={style.HeaderPart1_Right_Button_Span}>
-                Update person
+                {buttonText}
               </span>
             </button>
           </div>
         </div>
         <div className={style.HeaderPart2}>
           <div className={style.HeaderPart2_Inside}>
-            <h1 className={style.HeaderPart2_H1}>Rajan's Page</h1>
+            <h1 className={style.HeaderPart2_H1}>{headerTitle}</h1>
           </div>
         </div>
       </div>
