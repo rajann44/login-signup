@@ -1,0 +1,35 @@
+.buttonOuter {
+  box-sizing: border-box;
+  font-family: "Circular", -apple-system, BlinkMacSystemFont, system, sans-serif;
+  cursor: pointer;
+  position: relative;
+  height: 62px;
+  padding: 0 50px 0 50px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-shadow: none;
+  -webkit-appearance: none;
+  outline: none;
+  border-radius: 16px;
+  border: 2px solid #a2a9b0;
+  background: white;
+  background-color: #fff;
+  color: #343a3f;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.logo {
+  font-family: "Circular", -apple-system, BlinkMacSystemFont, system, sans-serif;
+  cursor: pointer;
+  color: #343a3f;
+  font-weight: 700;
+  font-size: 18px;
+  box-sizing: border-box;
+  height: 38px;
+  position: absolute;
+  left: 14px;
+  top: 10px;
+  bottom: 2px;
+  border-radius: 2px;
+}
