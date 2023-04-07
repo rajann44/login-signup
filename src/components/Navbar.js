@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import logo from "../img/nav.png";
-import { Appstate } from "../App";
+import { AuthContext } from "../context/AuthProvider";
 
 const Navbar = () => {
   let location = useLocation();
   const navigate = useNavigate();
-  const useAppstate = useContext(Appstate);
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <div>
@@ -57,14 +57,14 @@ const Navbar = () => {
                   Login
                 </Link>
               </li>
-              {useAppstate.login ? (
+              {user?.loginStatus ? (
                 <li className="nav-item">
                   <Link className="nav-link" to={"/"}>
                     <button
                       type="button"
-                      class="btn btn-warning"
+                      className="btn btn-warning"
                       onClick={() => {
-                        useAppstate.setLogin(false);
+                        logout();
                         navigate("/");
                       }}
                     >

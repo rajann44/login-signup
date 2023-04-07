@@ -4,16 +4,19 @@ const AuthProvider = (props) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
+    name: "",
+    loginStatus: false,
   });
-
-  // login function to set the user in state
-  const login = (userData) => {
-    setUser(userData);
-  };
 
   // logout function to clear the user from state
   const logout = () => {
     setUser(null);
+  };
+
+  // Set user data if user creds are correct, otherwise we set it as null
+  //This method get called in Login Component
+  const login = (userData) => {
+    setUser(userData);
   };
 
   return (
