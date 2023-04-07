@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import { useNavigate } from "react-router-dom";
 import { usersReference } from "../firebase/FireApp";
 import { addDoc, getDocs, query, where } from "firebase/firestore";
-import formstyle from "../style/form.module.css";
+import style from "../style/form.module.css";
 import signupLogo from "../assets/signupLogo.gif";
 import { isEmailInvalid, isPasswordInvalid } from "../utils/FormValidation";
 
@@ -67,25 +67,25 @@ const Signup = () => {
   };
 
   return (
-    <div className={"container my-3 " + formstyle.outerFrame}>
-      <div className={formstyle.outerFrame_2}>
-        <header className={formstyle.header}>
+    <div className={"container my-3 " + style.outerFrame}>
+      <div className={style.outerFrame_2}>
+        <header className={style.header}>
           <img
             width="100"
             height="100"
             src={signupLogo}
             role="presentation"
-            className={formstyle.header_img}
+            className={style.header_img}
           />
-          <h1 className={formstyle.header_h1}>Sign up Now</h1>
+          <h1 className={style.header_h1}>Sign up Now</h1>
         </header>
         <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className={formstyle.label}>
+          <label htmlFor="exampleFormControlInput1" className={style.label}>
             {/* Email address*/}
           </label>
           <input
             type="email"
-            className={formstyle.input}
+            className={style.input}
             id="email"
             placeholder="Work email"
             onChange={(event) =>
@@ -97,15 +97,12 @@ const Signup = () => {
           )}
         </div>
         <div className="mb-3">
-          <label
-            htmlFor="exampleFormControlTextarea2"
-            className={formstyle.label}
-          >
+          <label htmlFor="exampleFormControlTextarea2" className={style.label}>
             {/* Password*/}
           </label>
           <input
             type="password"
-            className={formstyle.input}
+            className={style.input}
             id="password"
             placeholder="Password"
             onChange={(event) =>
@@ -124,10 +121,10 @@ const Signup = () => {
         </div>
         <button
           type="button"
-          className={"btn btn-success my-3 " + formstyle.loginBtn}
+          className={"btn btn-success my-3 " + style.loginBtn}
           onClick={handleSignup}
         >
-          <span className={formstyle.loginBtnTxt}>Signup</span>
+          <span className={style.loginBtnTxt}>Signup</span>
         </button>
       </div>
     </div>

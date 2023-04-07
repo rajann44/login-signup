@@ -9,6 +9,7 @@ import { createContext, useState } from "react";
 import UserList from "./components/User/UserList";
 import { auth } from "./firebase/FireApp";
 import { useAuthState } from "react-firebase-hooks/auth";
+import AuthProvider from "./context/AuthProvider";
 
 const Appstate = createContext();
 
@@ -21,18 +22,20 @@ function App() {
     console.log("App JS:" + user.displayName);
   }
   return (
-    <Appstate.Provider value={{ login, setLogin }}>
-      <div className="App">
-        <Navbar></Navbar>
-        <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/signup" element={<Signup></Signup>}></Route>
-          <Route path="/login" element={<Login></Login>}></Route>
-          <Route path="/user/:id" element={<User></User>}></Route>
-          <Route path="/user" element={<UserList></UserList>}></Route>
-        </Routes>
-      </div>
-    </Appstate.Provider>
+    <AuthProvider>
+      <Appstate.Provider value={{ login, setLogin }}>
+        <div className="App">
+          <Navbar></Navbar>
+          <Routes>
+            <Route path="/" element={<Home></Home>}></Route>
+            <Route path="/signup" element={<Signup></Signup>}></Route>
+            <Route path="/login" element={<Login></Login>}></Route>
+            <Route path="/user/:id" element={<User></User>}></Route>
+            <Route path="/user" element={<UserList></UserList>}></Route>
+          </Routes>
+        </div>
+      </Appstate.Provider>
+    </AuthProvider>
   );
 }
 
