@@ -6,8 +6,8 @@ import { usersReference } from "../firebase/FireApp";
 import formstyle from "../style/form.module.css";
 import loginLogo from "../assets/login.gif";
 import { Appstate } from "../App";
-import Google from "./Button/Google";
 import HorizontalDiv from "./Divider/HorizontalDiv";
+import GoogleAuthButton from "./Button/GoogleAuthButton";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -128,10 +128,7 @@ const Login = () => {
           <span className={formstyle.loginBtnTxt}>Login</span>
         </button>
         <HorizontalDiv />
-        <Google
-          buttonLogoSrc="https://d1luwo5u9zpc4i.cloudfront.net/assets/google_signin-f3c9ed21a2b2cb641cd72c0c1ab811e3ad589cb0abfe0f4f37dce575492d29de.svg"
-          buttonText="Sign in with Google"
-        ></Google>
+        <GoogleAuthButton></GoogleAuthButton>
       </div>
     </div>
   );

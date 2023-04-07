@@ -7,11 +7,19 @@ import Signup from "./components/Signup";
 import User from "./components/User/User";
 import { createContext, useState } from "react";
 import UserList from "./components/User/UserList";
+import { auth } from "./firebase/FireApp";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Appstate = createContext();
 
 function App() {
   const [login, setLogin] = useState(false);
+  const [user] = useAuthState(auth);
+  if (user) {
+    console.log("App JS: " + user);
+    console.log("App JS:" + user.email);
+    console.log("App JS:" + user.displayName);
+  }
   return (
     <Appstate.Provider value={{ login, setLogin }}>
       <div className="App">
