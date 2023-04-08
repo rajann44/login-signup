@@ -1,9 +1,8 @@
-import { getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import style from "../../style/user/userlist.module.css";
-import { usersReference } from "../../firebase/FireApp";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header";
+import { getUsersInfoFromDb } from "../../firebase/UserFirebase";
 
 const UserList = () => {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ const UserList = () => {
   useEffect(() => {
     async function getUserListData() {
       setUserListInfo([]); //I have explicitly set it empty, so that there is no previous state stored (to avoid duplicate cards on screen)
-      const userData = await getDocs(usersReference);
+      const userData = await getUsersInfoFromDb();
       userData.forEach((user) => {
         setUserListInfo((prv) => [...prv, { ...user.data(), id: user.id }]);
       });
@@ -33,7 +32,7 @@ const UserList = () => {
       <Header
         backButtonLink="/"
         headerTitle="All Users List"
-        buttonText="Add User"
+        actionButtonText="Add User"
         handleOnClick={updateUser}
       ></Header>
       <div className={style.userDashboard}>
@@ -44,8 +43,8 @@ const UserList = () => {
           </div>
           {userListInfo.map((user, index) => {
             return (
-              <div className={style.divWithList}>
-                <div className={style.divWithListMain} key={index}>
+              <div className={style.divWithList} key={index}>
+                <div className={style.divWithListMain}>
                   <div className={style.divWithListRow}>
                     <div className={style.divWithUserName}>
                       <div className={style.divWithUserNameTooltipContainer}>

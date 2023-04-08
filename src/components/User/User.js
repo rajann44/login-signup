@@ -43,11 +43,11 @@ const User = () => {
 
   return (
     <>
-      <Toast showToast={showToast}></Toast>
+      <Toast showToast={showToast} toastMessage="User updated"></Toast>
       <Header
         backButtonLink="/user"
         headerTitle={`User ${userInfo.email.toUpperCase()}`}
-        buttonText="Update User"
+        actionButtonText="Update User"
         handleOnClick={updateUser}
       ></Header>
       <div className={style.MainContainer}>

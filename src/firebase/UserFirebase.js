@@ -62,3 +62,9 @@ export const signupAndUploadUserInfoToDb = async (userInfo) => {
     return false;
   }
 };
+
+//Get list of all users
+export const getUsersInfoFromDb = async () => {
+  const usersList = await getDocs(usersReference);
+  return usersList;
+};
