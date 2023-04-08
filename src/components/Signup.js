@@ -11,6 +11,7 @@ const Signup = () => {
   const [signupForm, setSignupForm] = useState({
     email: "",
     password: "",
+    username: "",
     isInvalid: {
       email: "",
       password: "",
@@ -82,6 +83,23 @@ const Signup = () => {
           />
           {signupForm.isInvalid.email && (
             <span style={{ color: "red" }}>Enter Valid 📧 Email 😓</span>
+          )}
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput2" className={style.label}>
+            {/* Username*/}
+          </label>
+          <input
+            type="text"
+            className={style.input}
+            id="username"
+            placeholder="Username"
+            onChange={(event) =>
+              setSignupForm({ ...signupForm, username: event.target.value })
+            }
+          />
+          {signupForm.isInvalid.email && (
+            <span style={{ color: "red" }}>Enter Valid 📧 Username 😓</span>
           )}
         </div>
         <div className="mb-3">

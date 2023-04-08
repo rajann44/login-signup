@@ -9,6 +9,7 @@ const UserList = () => {
   const [userListInfo, setUserListInfo] = useState([
     {
       email: "",
+      name: "",
     },
   ]);
 
@@ -56,7 +57,7 @@ const UserList = () => {
                           <a className={style.divWithUserNameAvatar}>
                             <div className={style.divWithUserNameTooltip}>
                               <div className={style.divWithUserNameAvatarTitle}>
-                                R
+                                {user.name.charAt(0)}
                               </div>
                             </div>
                           </a>
@@ -65,7 +66,7 @@ const UserList = () => {
                               to={"/user/" + user.id}
                               className={style.divWithUserNameColumnUserName}
                             >
-                              {user.email}
+                              {user.name}
                             </Link>
                             <div
                               className={style.divWithUserNameColumnUserDetail}
@@ -75,7 +76,7 @@ const UserList = () => {
                                   style.divWithUserNameColumnUserDetailText
                                 }
                               >
-                                Head Admin
+                                {user.email}
                               </span>
                             </div>
                           </div>

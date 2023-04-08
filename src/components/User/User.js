@@ -46,7 +46,7 @@ const User = () => {
       <Toast showToast={showToast} toastMessage="User updated"></Toast>
       <Header
         backButtonLink="/user"
-        headerTitle={`User ${userInfo.email.toUpperCase()}`}
+        headerTitle={`User ${userInfo.name?.toUpperCase()}`}
         actionButtonText="Update User"
         handleOnClick={updateUser}
       ></Header>
@@ -67,11 +67,36 @@ const User = () => {
                     <label className={style.InputLabel}></label>
                     <input
                       className={style.InputField}
+                      placeholder="Full Name Here"
+                      value={userInfo.name}
+                      onChange={(event) =>
+                        setUserInfo({ ...userInfo, name: event.target.value })
+                      }
+                    ></input>
+                  </div>
+                </div>
+                <div className={style.FormSectionGridRow}>
+                  <div className={style.FormSectionGridColumn}>
+                    <label className={style.InputLabel}></label>
+                    <input
+                      className={style.InputField}
                       placeholder="Email"
                       value={userInfo.email}
                       onChange={(event) =>
                         setUserInfo({ ...userInfo, email: event.target.value })
                       }
+                    ></input>
+                  </div>
+                </div>
+                <div className={style.FormSectionGridRow}>
+                  <div className={style.FormSectionGridColumn}>
+                    <label className={style.InputLabel}></label>
+                    <input
+                      disabled
+                      className={`${style.InputField} bg-secondary-subtle`}
+                      placeholder="Username"
+                      value={userInfo.username}
+                      type="text"
                     ></input>
                   </div>
                 </div>

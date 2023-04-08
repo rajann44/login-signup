@@ -49,6 +49,8 @@ export const signupAndUploadUserInfoToDb = async (userInfo) => {
       var hash = bcrypt.hashSync(userInfo.password, salt);
       await addDoc(usersReference, {
         email: userInfo.email,
+        username: userInfo.username,
+        name: "",
         password: hash,
       });
       console.log("User signup successful");
