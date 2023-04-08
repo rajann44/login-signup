@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import bcrypt from "bcryptjs";
 import { useNavigate } from "react-router-dom";
-import { usersReference } from "../firebase/FireApp";
-import { addDoc, getDocs, query, where } from "firebase/firestore";
 import style from "../style/form.module.css";
 import signupLogo from "../assets/signupLogo.gif";
 import { isEmailInvalid, isPasswordInvalid } from "../utils/FormValidation";
+import { signupAndUploadUserInfoToDb } from "../firebase/UserFirebase";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -42,27 +40,17 @@ const Signup = () => {
       !isEmailInvalid(signupForm.email) &&
       !isPasswordInvalid(signupForm.password)
     ) {
-      try {
-        const queryResult = query(
-          usersReference,
-          where("email", "==", signupForm.email)
-        );
-        const userDocument = await getDocs(queryResult);
-        if (userDocument.size === 0) {
-          const salt = bcrypt.genSaltSync(10);
-          var hash = bcrypt.hashSync(signupForm.password, salt);
-          await addDoc(usersReference, {
-            email: signupForm.email,
-            password: hash,
-          });
-          console.log("User signup successful");
+      // Call the function like this:
+      (async () => {
+        const result = await signupAndUploadUserInfoToDb(signupForm);
+        console.log(result);
+        if (result) {
           navigate("/login");
+          console.log("User signup successful");
         } else {
-          console.log("User signup failed, Email already exists");
+          console.log("User signup failed");
         }
-      } catch (error) {
-        console.log("User signup failed " + error);
-      }
+      })();
     }
   };
 

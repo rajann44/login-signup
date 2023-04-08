@@ -1,4 +1,4 @@
-import { getDocs, query, where } from "firebase/firestore";
+import { addDoc, getDocs, query, where } from "firebase/firestore";
 import { usersReference } from "./FireApp";
 import bcrypt from "bcryptjs";
 
@@ -32,5 +32,33 @@ export const validateIfUserPresentInDBAndSendUserDetails = async (userInfo) => {
   } catch (error) {
     console.log("Login Failed");
     return null; // Add a default return value in case of an error
+  }
+};
+
+//Method used to signup the user and upload details to DB
+export const signupAndUploadUserInfoToDb = async (userInfo) => {
+  try {
+    const queryResult = query(
+      usersReference,
+      where("email", "==", userInfo.email)
+    );
+    const userDocument = await getDocs(queryResult);
+    if (userDocument.size === 0) {
+      //Checking if the user already existing or not
+      const salt = bcrypt.genSaltSync(10);
+      var hash = bcrypt.hashSync(userInfo.password, salt);
+      await addDoc(usersReference, {
+        email: userInfo.email,
+        password: hash,
+      });
+      console.log("User signup successful");
+      return true;
+    } else {
+      console.log("User signup failed, user already exists");
+      return false;
+    }
+  } catch (error) {
+    console.log("User signup failed " + error);
+    return false;
   }
 };
