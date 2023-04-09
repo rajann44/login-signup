@@ -10,6 +10,8 @@ import UserList from "./components/User/UserList";
 import { auth } from "./firebase/FireApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AuthProvider from "./context/AuthProvider";
+import ChatApp from "./components/Chat/ChatApp";
+import ChatUI from "./components/Chat/ChatUI";
 
 const Appstate = createContext();
 
@@ -31,6 +33,8 @@ function App() {
             <Route path="/signup" element={<Signup></Signup>}></Route>
             <Route path="/login" element={<Login></Login>}></Route>
             <Route path="/user/:id" element={<User></User>}></Route>
+            <Route path="/chat" element={<ChatApp></ChatApp>}></Route>
+            <Route path="/chat2" element={<ChatUI></ChatUI>}></Route>
             <Route path="/user" element={<UserList></UserList>}></Route>
           </Routes>
         </div>
