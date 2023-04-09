@@ -1,0 +1,43 @@
+.userlist-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.userlist-header {
+  background-color: #128c7e;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.userlist-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.user-item:hover {
+  background-color: #e8f5e9;
+}
+
+.user-item.active {
+  background-color: #dcf8c6;
+}
+
+.user-icon {
+  margin-right: 10px;
+  font-size: 20px;
+}
